@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+	">
+
+	<context:annotation-config />
+
+	<!--  JPA config  -->
+
+	<tx:annotation-driven />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		p:persistence-xml-location="classpath:META-INF/persistence.xml"
+		p:data-source-ref="dataSource">
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+				p:showSql="true" p:generateDdl="true">
+			</bean>
+		</property>
+		<property name="jpaProperties">
+			<value>
+				hibernate.ejb.naming_strategy=org.hibernate.cfg.ImprovedNamingStrategy
+				hibernate.dialect=${hibernate.dialect}
+				hibernate.hbm2ddl.auto=${hibernate.hbm2ddl.auto}
+			</value>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+
+	<!-- DAOs -->
+	<bean id="basicDao" class="org.zkbase.dao.BasicDao" />
+
+	<bean id="userService" class="org.zkbase.service.UserService" />
+
+	<bean id="userAuthenticationDetailsService" class="org.zkbase.service.UserAuthenticationDetailsService" />
+
+	<bean id="roleService" class="org.zkbase.service.RoleService" />
+
+	<bean id="userController" class="org.zkbase.webapp.controller.UserController"
+		scope="prototype" />
+
+
+</beans>

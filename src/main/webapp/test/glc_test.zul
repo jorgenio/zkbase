@@ -1,0 +1,16 @@
+<?page title="Generic List Test" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+	<window title="Generic List Test" border="normal"
+		apply="org.zkbase.webapp.controller.GenUserListComposer">
+		<textbox id="glc_searchField" />
+		<button id="search" label="search" />
+		<paging id="glc_page" pageSize="15" />
+		<listbox id="glc_listbox">
+			<listhead>
+				<listheader label="first name" />
+				<listheader label="last name" />
+			</listhead>
+		</listbox>
+	</window>
+</zk>

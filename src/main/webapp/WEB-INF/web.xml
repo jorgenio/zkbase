@@ -1,0 +1,89 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app>
+	<display-name>zkbase</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:data-source-context.xml,classpath:spring-context.xml,
+			classpath:spring-security-short.xml
+		</param-value>
+	</context-param>
+
+	<!-- FILTER -->
+
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter><!--
+	<filter>
+		<filter-name>Spring OpenEntityManagerInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+	</filter>
+
+    --><!-- FILTER MAPPING -->
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping><!--
+	<filter-mapping>
+		<filter-name>Spring OpenEntityManagerInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	--><!--LISTENER -->
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			org.zkoss.zk.ui.http.HttpSessionListener
+		</listener-class>
+	</listener>
+	
+	<!-- SERVLET -->
+	<servlet>
+		<servlet-name>zkLoader</servlet-name>
+		<servlet-class>
+			org.zkoss.zk.ui.http.DHtmlLayoutServlet
+		</servlet-class>
+		<init-param>
+			<param-name>update-uri</param-name>
+			<param-value>/zkau</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>auEngine</servlet-name>
+		<servlet-class>
+			org.zkoss.zk.au.http.DHtmlUpdateServlet
+		</servlet-class>
+	</servlet>
+	
+	<!-- SERVLET MAPPING -->
+
+	<servlet-mapping>
+		<servlet-name>zkLoader</servlet-name>
+		<url-pattern>*.zul</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>zkLoader</servlet-name>
+		<url-pattern>*.zhtml</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>auEngine</servlet-name>
+		<url-pattern>/zkau/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- WELCOME FILE LIST -->
+
+	<welcome-file-list>
+		<welcome-file>index.zul</welcome-file>
+	</welcome-file-list>
+</web-app>

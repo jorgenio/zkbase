@@ -1,0 +1,34 @@
+<?page id="loginPage" title="Login to ZKBASE"?>
+<window id="login" title="Login ..." border="normal" width="500px"
+	onCreate="self.doModal()" closable="true">
+
+	<html style="color:red" if="${not empty param.login_error}">
+		<![CDATA[
+        Your login attempt was not successful, try again.<br/><br/>
+        Reason: ${SPRING_SECURITY_LAST_EXCEPTION.message}
+       ]]>
+	</html>
+	<h:form id="f" name="f" action="j_spring_security_check"
+		method="POST" xmlns:h="http://www.w3.org/1999/xhtml">
+		<grid>
+			<rows>
+				<row>
+					User:
+					<textbox id="u" name="j_username" />
+				</row>
+				<row>
+					Password:
+					<textbox id="p" type="password" name="j_password" />
+				</row>
+				<row>
+					Submit Query:
+					<hbox>
+						<h:input type="submit" value="OK" />
+						<h:input type="button" value="Cancle"
+							onClick="login.detach()" />
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</h:form>
+</window>

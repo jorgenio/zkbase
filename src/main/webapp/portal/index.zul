@@ -1,0 +1,6 @@
+<?page title="super" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="User Stuff" border="normal">
+New Content Here!
+</window>
+</zk>
