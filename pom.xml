@@ -8,7 +8,7 @@
 	<name>zkbase</name>
 	<url>http://code.google.com/p/zkbase/</url>
 	<properties>
-		<zk.version>3.5.2</zk.version>
+		<zk.version>3.6.1</zk.version>
 		<zkel.version>1.0.1</zkel.version>
 		<spring.version>2.5.5</spring.version>
 		<spring-security.version>2.0.4</spring-security.version>
@@ -20,7 +20,7 @@
 		<commons-dbcp.version>1.2.2</commons-dbcp.version>
 
 		<!-- Database operation types -->
-		<hibernate.hbm2ddl.auto>create-drop</hibernate.hbm2ddl.auto>
+		<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
 		<dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
 
 
@@ -254,7 +254,7 @@
 		<profile>
 			<id>hsqldb</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<dbunit.dataTypeFactoryName>org.dbunit.ext.hsqldb.HsqldbDataTypeFactory</dbunit.dataTypeFactoryName>
@@ -272,7 +272,7 @@
 		<profile>
 			<id>mysql</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
 				<dbunit.dataTypeFactoryName>org.dbunit.dataset.datatype.DefaultDataTypeFactory</dbunit.dataTypeFactoryName>

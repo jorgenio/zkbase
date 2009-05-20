@@ -46,9 +46,14 @@
 	<bean id="userAuthenticationDetailsService" class="org.zkbase.service.UserAuthenticationDetailsService" />
 
 	<bean id="roleService" class="org.zkbase.service.RoleService" />
+	
+	<bean id="meetingService" class="org.zkbase.service.MeetingService" />
 
 	<bean id="userController" class="org.zkbase.webapp.controller.UserController"
 		scope="prototype" />
-
+		
+	<bean id="meetingModel" class="org.zkbase.webapp.model.MeetingModel" />
+	
+	<bean id="userModel" class="org.zkbase.webapp.model.UserModel" />
 
 </beans>

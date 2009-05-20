@@ -1,0 +1,55 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<window id="meetingWin" width="500px"
+	apply="org.zkbase.webapp.composer.MeetingComposer">
+	<vbox>
+		meetings:
+		<combobox id="meetingBox" model="@{meetingModel.list}"
+			selectedItem="@{meetingModel.selected}" width="300px"
+			onChange="add.visible=false; update.visible=true;  del.visible=true" />
+		title:
+		<textbox id="title" value="@{meetingModel.selected.title}"
+			width="300px" />
+		number:
+		<intbox id="number" value="@{meetingModel.selected.number}" />
+		leader:
+		<label value="@{meetingModel.selected.leader.username}" />
+		<listbox id="userList" model="@{userModel.list}"
+			selectedItem="@{meetingModel.selected.leader}" rows="5"
+			width="300px">
+			<listhead>
+				<listheader label="name" />
+				<listheader label="email" />
+			</listhead>
+			<listitem self="@{each=user}">
+				<listcell label="@{user.username}" />
+				<listcell label="@{user.email}" />
+			</listitem>
+		</listbox>
+		<!--
+			participants:
+			<listbox id="userList" model="@{userModel.list}"
+			selectedItem="@{userModel.selected}" multiple="true" rows="6"
+			width="300px">
+			<listhead>
+			<listheader label="name" />
+			<listheader label="email" />
+			</listhead>
+			<listitem self="@{each=user}">
+			<listcell label="@{user.username}" />
+			<listcell label="@{user.email}" />
+			</listitem>
+			</listbox>
+			content:
+		-->
+		<textbox id="content" value="@{meetingModel.selected.content}"
+			width="300px" rows="10" />
+	</vbox>
+	<button id="add" label="Add" />
+	<button id="update" label="Update" visible="false" />
+	<button id="del" label="Delete" visible="false"
+		onClick="add.visible=true; update.visible=false; del.visible=false" />
+	<button id="cancel" label="Cancel"
+		onClick="add.visible=true; update.visible=false; del.visible=false" />
+
+</window>
