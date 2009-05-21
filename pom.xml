@@ -20,7 +20,7 @@
 		<commons-dbcp.version>1.2.2</commons-dbcp.version>
 
 		<!-- Database operation types -->
-		<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
+		<hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
 		<dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
 
 

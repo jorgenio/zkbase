@@ -3,12 +3,12 @@ package org.zkbase.webapp.composer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.zkbase.dao.EntityNotFoundException;
 import org.zkbase.model.Meeting;
-import org.zkbase.model.User;
 import org.zkbase.webapp.model.MeetingModel;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zkplus.databind.AnnotateDataBinder;
+import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Window;
 
 public class MeetingComposer extends GenericForwardComposer {
@@ -22,9 +22,6 @@ public class MeetingComposer extends GenericForwardComposer {
 	public void setNewMeeting() {
 		Meeting meeting = new Meeting();
 		meeting.setId(null);
-		User user = new User();
-		user.setId(null);
-		meeting.setLeader(user);
 		this.meetingModel.setSelected(meeting);
 	}
 
@@ -38,7 +35,6 @@ public class MeetingComposer extends GenericForwardComposer {
 	
 	public void onClick$add(Event e) throws EntityNotFoundException {
 		this.meetingModel.persist();
-		this.setNewMeeting();
 		binder.loadAll();
 	}
 
