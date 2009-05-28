@@ -1,0 +1,20 @@
+
+<window id="userWin" title="User Add" closable="true" mode="modal" apply="org.zkbase.webapp.composer.UserComposer">
+	<groupbox id="group" width="240px" closable="true">
+		<caption label="Add User" />
+		<vbox>
+			user name:
+			<textbox id="username" value="@{userModel.selected.username}" constraint="/[a-z]+/: invalid username, only lower case letters allowed"/>
+			first name:
+			<textbox id="firstName" value="@{userModel.selected.firstName}" constraint="/[A-Z].[a-z]*/: invalid first name, first letter must be capital"/>
+			last name:
+			<textbox id="lastName" value="@{userModel.selected.lastName}" constraint="/[A-Z].[a-z]*/: invalid last name, first letter must be capital"/>
+			password:
+			<textbox id="password" value="@{userModel.selected.password}" constraint="no empty: password field must not be empty"/>
+			email:
+			<textbox id="email" value="@{userModel.selected.email}" constraint="/.+@.+\.[a-z]+/: invalid e-mail"/>
+		</vbox>
+		<button id="add" label="Add" width="36px" height="24px" />
+		<button id="close" label="Close" width="36px" height="24px" forward="onClick=onClose"/>
+	</groupbox>
+</window>

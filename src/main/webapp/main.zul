@@ -9,15 +9,24 @@
 				<menuitem label="Add" onClick='main.includeContent("portal/user/userAdd.zul")' />							
 			</menupopup>
 		</menu>
+		<menu label="Office">
+			<menupopup>
+				<menuitem label="Meetings" onClick='main.includeContent("portal/office/meeting.zul")'/>
+			</menupopup>
+		</menu>		
 		<menu label="Admin">
 			<menupopup>
 				<menuitem label="List" onClick='main.includeContent("admin/index.zul")'/>
 				<menuseparator />
 				<menuitem label="Add" onClick='main.includeContent("admin/index.zul")'/>
 			</menupopup>
+		</menu>		
+		<menu label="Test Area">
+			<menupopup>
+				<menuitem label="Test User List" onClick='Executions.sendRedirect("test/glc_test.zul")'/>
+			</menupopup>
 		</menu>
-		<menuitem label="About" onClick="main.about()" />
-		<menuitem label="Test User List" onClick='Executions.sendRedirect("test/glc_test.zul")'/>
+		<menuitem label="About" onClick="main.about()" />				
 	</menubar>
 	<include id="content" />
 </window>

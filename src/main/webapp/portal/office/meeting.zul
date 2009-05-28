@@ -32,8 +32,8 @@
 
 			participants:
 			<listbox id="participantsList" model="@{userModel.list}"
-				selectedItem="@{meetingModel.selected.participants, converter=org.zkbase.webapp.model.SelectedItemsConverter}" multiple="true" rows="6"
-				width="300px">
+				selectedItem="@{meetingModel.selected.participants, converter=org.zkbase.webapp.model.SelectedItemsConverter}"
+				multiple="true" rows="6" width="300px">
 				<listhead>
 					<listheader label="name" />
 					<listheader label="email" />
@@ -43,14 +43,17 @@
 					<listcell label="@{user1.email}" />
 				</listitem>
 			</listbox>
-
+			<button id="buttonUserAdd" label="Add User" >
+				
+				</button>
 		</vbox>
 		<vbox>
 			content:
 			<textbox id="content"
 				value="@{meetingModel.selected.content}" width="500px" rows="30" />
 			<hbox>
-				<button id="add" label="Add" onClick="add.visible=false; update.visible=true; del.visible=true; cancel.visible=true"/>
+				<button id="add" label="Add"
+					onClick="add.visible=false; update.visible=true; del.visible=true; cancel.visible=true" />
 				<button id="update" label="Update" visible="false" />
 				<button id="del" label="Delete" visible="false"
 					onClick="add.visible=true; update.visible=false; del.visible=false" />

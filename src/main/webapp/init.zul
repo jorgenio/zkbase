@@ -23,22 +23,5 @@
 			</listhead>
 		</listbox>
 		<button id="init" label="Init" width="36px" height="24px" />
-
-	<groupbox width="240px" closable="true">
-		<caption label="Add User" />
-		<vbox>
-			user name:
-			<textbox id="username" />
-			first name:
-			<textbox id="firstName" />
-			last name:
-			<textbox id="lastName" />
-			password:
-			<textbox id="password" />
-			email:
-			<textbox id="email" />
-		</vbox>
-		<button id="add" label="Add" width="36px" height="24px" />
-	</groupbox>
 	</window>
 </zk>
