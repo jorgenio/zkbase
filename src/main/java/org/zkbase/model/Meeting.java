@@ -7,12 +7,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-
-import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="zkb_meeting")
@@ -51,7 +49,7 @@ public class Meeting {
 	public void setContent(String content) {
 		this.content = content;
 	}		
-	@OneToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER)
 	public Set<User> getParticipants() {
 		return participants;
 	}
