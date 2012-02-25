@@ -2,6 +2,6 @@
 <zk xmlns="http://www.zkoss.org/2005/zul">
 	<div>go to the application:</div>
 	<div>
-		<toolbarbutton href="main.zul" label="->ZK BASE" />
+		<toolbarbutton href="main.zul" label="entrar" />
 	</div>
 </zk>
